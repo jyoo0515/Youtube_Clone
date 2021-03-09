@@ -51,6 +51,16 @@ router.post("/uploadvideo", (req, res) => {
   });
 });
 
+router.get("/getvideos", (req, res) => {
+  // get videos from db
+  Video.find()
+    .populate("writer")
+    .exec((err, videos) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).json({ success: true, videos });
+    });
+});
+
 router.post("/thumbnail", (req, res) => {
   // Create thumbnail and fetch video running time
 
