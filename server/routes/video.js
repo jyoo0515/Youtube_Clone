@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const { User } = require("../models/User");
+const { Video } = require("../models/Video");
 
 const { auth } = require("../middleware/auth");
 const multer = require("multer");
@@ -30,12 +30,24 @@ let storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single("file");
 
 router.post("/uploadfiles", (req, res) => {
-  // save video to server
+  // save video
   upload(res, req, (err) => {
     if (err) {
       return res.json({ success: false }, err);
     }
     return res.json({ success: true, url: res.req.file.path, fileName: res.req.file.filename });
+  });
+});
+
+router.post("/uploadvideo", (req, res) => {
+  // save video data to db
+  const video = new Video(req.body);
+
+  video.save((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({ success: true });
   });
 });
 
