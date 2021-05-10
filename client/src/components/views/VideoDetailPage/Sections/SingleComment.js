@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Comment, Avatar, Button, Input } from "antd";
 import axios from "axios";
+import LikeDislikes from "./LikeDislikes";
 
 const { TextArea } = Input;
 
@@ -14,7 +15,7 @@ function SingleComment(props) {
   };
 
   const onHandleChange = (e) => {
-    setCommentValue(e.currentTarget.commentValue);
+    setCommentValue(e.currentTarget.value);
   };
 
   const onSubmit = (e) => {
@@ -38,6 +39,7 @@ function SingleComment(props) {
   };
 
   const actions = [
+    <LikeDislikes userId={localStorage.getItem("userId")} commentId={props.comment._id} />,
     <span onClick={onClickReplyOpen} key="comment-basic-reply-to">
       {" "}
       Reply to
