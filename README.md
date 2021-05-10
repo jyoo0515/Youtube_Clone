@@ -1,10 +1,5 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
+# 프로젝트 소개
 
-To use this application, 
+### Youtube 서비스 클론 프로젝트
 
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
-
+- Javascript를 이용한 풀스택 개발
